@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          img{
+              width: 500px;
+              height: 500px;
+              border: 20px dotted black;
+              margin-left: 30%;
+          }
+    </style>
+</head>
+<body>
+    <img src=""  id="image">
+    <script>
+        var image=document.getElementById('image');
+        var images=['images/doll.jpg','images/teddy.jpg','images/flower1.jpg','images/cat.jpg','images/bird.jpg','images/barbie.jpg'];
+        var index=0;
+        function slideImage(){
+            image.setAttribute("src",images[index]);
+            index++;
+            if(index>images.length-1){
+                index=0;
+            }
+
+        }
+       
+        setInterval("slideImage()",1000);
+     
+    </script>   
+</body>
+</html>
