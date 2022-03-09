@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login form</title>
+</head>
+<style>
+    span {
+        color: red;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    section {
+        background-color: aquamarine;
+        width: 500px;
+        height: 200px;
+        margin-top: 15%;
+        margin-left: 28%;
+        padding: 20px 50px;
+    }
+</style>
+
+<body>
+    <section>
+        <h1>L O G I N - F O R M</h1>
+        <form action="#" onsubmit="return validation()" id="myform">
+            <table>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" id="email"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><span id="email_error"></span></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="text" id="passwd"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><span id="passwd_error"></span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit"></td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            let myform = document.getElementById("myform");
+            myform.addEventListener("submit", function (event) {
+                event.preventDefault();
+            })
+            var obj = [{
+                emp_email: "mala123@gmail.com",
+                emp_password: "Mala@123"
+            },
+            {
+                emp_email: "sneht1@gmail.com",
+                emp_password: "S@$%1"
+            },
+            {
+                emp_email: "mala123@gmail.com",
+                emp_password: "Mala@123"
+            }
+            ]
+
+            function validation() {
+                let email = document.getElementById('email').value;
+                let password = document.getElementById('passwd').value;
+                let passwordCheck = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,24}$/;
+                if (email == "") {
+                    document.getElementById("email_error").innerHTML = "** please fill the email field";
+                    return false;
+                }
+                if (email.indexOf('@') <= 0) {
+                    document.getElementById('email_error').innerHTML = "** invalid @ position";
+                    return false;
+                }
+                if (email.charAt(email.length - 4) != '.') {
+                    document.getElementById('email_error').innerHTML = "** invalid extension";
+                    return false;
+                }
+                if (password == "") {
+                    document.getElementById("passwd_error").innerHTML = "** please fill the password field";
+                    return false;
+                }
+                if (passwordCheck.test(password)) {
+                    document.getElementById("passwd_error").innerHTML = "";
+                } else {
+                    document.getElementById("passwd_error").innerHTML = "**password format not matched";
+                    return false;
+                }
+
+                for (i = 0; i < obj.length; i++) {
+                    if (obj[i].emp_email == email && obj[i].emp_password == password) {
+                        alert("login sucessful");
+                        break;
+                    } else {
+                        alert("invalid email and password");
+                        break;
+                    }
+                }
+
+
+
+
+            }
+
+
+        </script>
+    </section>
+</body>
+
+</html>

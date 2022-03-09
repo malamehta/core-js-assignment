@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        .calculator{
+            margin: auto;
+            background-color: black;
+        }
+        .button{
+            width: 100%;
+            height: 90%;
+            border-radius: 20px;
+            background-color: coral;
+        }
+        .calculator{
+            width: 300px;
+            height: 300px;
+        }
+        .display{
+            width: 97%;
+            height: 70%;
+        }
+    
+    </style>
+</head>
+<body>
+    <table class="calculator" border="1">
+        <tr>
+            <td colspan="3"><input type="text" class="display" id="result"></td>
+            <td><input type="button" value="C" class="button" onclick="clearScreen()" ></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="1" class="button" onclick="display('1')" ></td>
+            <td><input type="button" value="2" class="button" onclick="display('2')" ></td>
+            <td><input type="button" value="3" class="button" onclick="display('3')" ></td>
+            <td><input type="button" value="/" class="button" onclick="display('/')" ></td> 
+        </tr>
+
+        <tr>
+            <td><input type="button" value="4" class="button" onclick="display('4')" ></td>
+            <td><input type="button" value="5" class="button" onclick="display('5')"></td>
+            <td><input type="button" value="6" class="button" onclick="display('6')"></td>
+            <td><input type="button" value="*" class="button" onclick="display('*')"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="7" class="button" onclick="display('7')" ></td>
+            <td><input type="button" value="8" class="button" onclick="display('8')"></td>
+            <td><input type="button" value="9" class="button" onclick="display('9')"></td>
+            <td><input type="button" value="-" class="button" onclick="display('-')"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="." class="button" onclick="display('.')" ></td>
+            <td><input type="button" value="0" class="button" onclick="display('0')"></td>
+            <td><input type="button" value="=" class="button" onclick="calculate()"></td>
+            <td><input type="button" value="+" class="button" onclick="display('+')"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="Show History" class="button" onclick="showHistory()"></td>
+        
+            <td colspan="2"><input type="button" value="clear History" class="button" onclick="clearHistory()"></td>
+        </tr>
+
+        <tr class="history">
+            <td colspan="4"><input type="text" class="button"id="History" ></td>
+        </tr>
+
+    </table>
+    <script>
+        let history=[];
+        function display(value){
+            document.getElementById("result").value+=value;
+        }
+
+        function clearScreen(){
+            document.getElementById("result").value='';
+        }
+
+        function calculate(){
+            var a= document.getElementById('result').value;
+            var b=eval(a);
+            var calculation=document.getElementById('result').value=(a+"="+b);
+            history.push(calculation);
+            // console.log(history)
+        }
+        function showHistory(){
+             document.getElementById('History').value=history;
+            // console.log(history)
+        }
+        function clearHistory(){
+            document.getElementById('History').value="";S
+        }
+        
+    </script>
+</body>
+</html>
